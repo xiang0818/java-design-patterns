@@ -1,6 +1,8 @@
 /*
+ * This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+ *
  * The MIT License
- * Copyright © 2014-2021 Ilkka Seppälä
+ * Copyright © 2014-2022 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +22,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.iluwatar.spatialpartition;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
-import java.util.Random;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <p>The idea behind the <b>Spatial Partition</b> design pattern is to enable efficient location
@@ -57,8 +57,8 @@ import org.slf4j.LoggerFactory;
  * speed of the game.</p>
  */
 
+@Slf4j
 public class App {
-  private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
   private static final String BUBBLE = "Bubble ";
 
   static void noSpatialPartition(int numOfMovements, HashMap<Integer, Bubble> bubbles) {
@@ -112,7 +112,7 @@ public class App {
   public static void main(String[] args) {
     var bubbles1 = new HashMap<Integer, Bubble>();
     var bubbles2 = new HashMap<Integer, Bubble>();
-    var rand = new Random();
+    var rand = new SecureRandom();
     for (int i = 0; i < 10000; i++) {
       var b = new Bubble(rand.nextInt(300), rand.nextInt(300), i, rand.nextInt(2) + 1);
       bubbles1.put(i, b);

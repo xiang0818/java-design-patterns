@@ -1,6 +1,8 @@
 /*
+ * This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+ *
  * The MIT License
- * Copyright © 2014-2021 Ilkka Seppälä
+ * Copyright © 2014-2022 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +22,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.iluwatar.tls;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -48,7 +49,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Thomas Bauer, January 2017
  */
-public class DateFormatCallableTest {
+class DateFormatCallableTest {
 
   // Class variables used in setup() have to be static because setup() has to be static
   /**
@@ -122,7 +123,7 @@ public class DateFormatCallableTest {
    * 15.12.2015
    */
   @Test
-  public void testDateValues() {
+  void testDateValues() {
     assertEquals(expectedDateValues, createdDateValues);
   }
 
@@ -131,7 +132,7 @@ public class DateFormatCallableTest {
    * deliver 5 date values
    */
   @Test
-  public void testCounterDateValues() {
+  void testCounterDateValues() {
     assertEquals(expectedCounterDateValues, result.getDateList().size());
   }
 
@@ -140,7 +141,7 @@ public class DateFormatCallableTest {
    * deliver no exceptions
    */
   @Test
-  public void testCounterExceptions() {
+  void testCounterExceptions() {
     assertEquals(expectedCounterExceptions, result.getExceptionList().size());
   }
 }

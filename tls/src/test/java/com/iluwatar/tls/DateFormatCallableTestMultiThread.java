@@ -1,6 +1,8 @@
 /*
+ * This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+ *
  * The MIT License
- * Copyright © 2014-2021 Ilkka Seppälä
+ * Copyright © 2014-2022 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +22,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.iluwatar.tls;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -134,7 +135,7 @@ public class DateFormatCallableTestMultiThread {
    * 15.12.2015 by each thread
    */
   @Test
-  public void testDateValues() {
+  void testDateValues() {
     for (var createdDateValue : createdDateValues) {
       assertEquals(expectedDateValues, createdDateValue);
     }
@@ -145,7 +146,7 @@ public class DateFormatCallableTestMultiThread {
    * deliver 5 date values by each thread
    */
   @Test
-  public void testCounterDateValues() {
+  void testCounterDateValues() {
     for (var value : result) {
       assertEquals(expectedCounterDateValues, value.getDateList().size());
     }
@@ -156,7 +157,7 @@ public class DateFormatCallableTestMultiThread {
    * deliver no exceptions
    */
   @Test
-  public void testCounterExceptions() {
+  void testCounterExceptions() {
     for (var value : result) {
       assertEquals(expectedCounterExceptions, value.getExceptionList().size());
     }

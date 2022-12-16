@@ -1,6 +1,8 @@
 /*
+ * This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+ *
  * The MIT License
- * Copyright © 2014-2021 Ilkka Seppälä
+ * Copyright © 2014-2022 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,12 +22,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.iluwatar.event.sourcing.event;
 
 import com.iluwatar.event.sourcing.state.AccountAggregate;
 import java.math.BigDecimal;
 import java.util.Optional;
+import lombok.Getter;
 
 /**
  * This is the class that implements money transfer event. Holds the necessary info for a money
@@ -34,6 +36,7 @@ import java.util.Optional;
  *
  * <p>Created by Serdar Hamzaogullari on 06.08.2017.
  */
+@Getter
 public class MoneyTransferEvent extends DomainEvent {
 
   private final BigDecimal money;
@@ -55,33 +58,6 @@ public class MoneyTransferEvent extends DomainEvent {
     this.money = money;
     this.accountNoFrom = accountNoFrom;
     this.accountNoTo = accountNoTo;
-  }
-
-  /**
-   * Gets money.
-   *
-   * @return the money
-   */
-  public BigDecimal getMoney() {
-    return money;
-  }
-
-  /**
-   * Gets account no which the money comes from.
-   *
-   * @return the account no from
-   */
-  public int getAccountNoFrom() {
-    return accountNoFrom;
-  }
-
-  /**
-   * Gets account no which the money goes to.
-   *
-   * @return the account no to
-   */
-  public int getAccountNoTo() {
-    return accountNoTo;
   }
 
   @Override

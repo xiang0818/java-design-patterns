@@ -1,6 +1,8 @@
 /*
+ * This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+ *
  * The MIT License
- * Copyright © 2014-2021 Ilkka Seppälä
+ * Copyright © 2014-2022 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +22,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.iluwatar.event.asynchronous;
 
+import java.security.SecureRandom;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -43,7 +44,7 @@ public class EventManager implements ThreadCompleteListener {
   public static final int MAX_ID = MAX_RUNNING_EVENTS;
   public static final int MAX_EVENT_TIME = 1800; // in seconds / 30 minutes.
   private int currentlyRunningSyncEvent = -1;
-  private final Random rand;
+  private final SecureRandom rand;
   private final Map<Integer, Event> eventPool;
 
   private static final String DOES_NOT_EXIST = " does not exist.";
@@ -52,8 +53,8 @@ public class EventManager implements ThreadCompleteListener {
    * EventManager constructor.
    */
   public EventManager() {
-    rand = new Random(1);
-    eventPool = new ConcurrentHashMap<Integer, Event>(MAX_RUNNING_EVENTS);
+    rand = new SecureRandom();
+    eventPool = new ConcurrentHashMap<>(MAX_RUNNING_EVENTS);
 
   }
 
