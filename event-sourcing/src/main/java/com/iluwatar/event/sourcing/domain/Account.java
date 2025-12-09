@@ -68,9 +68,13 @@ public class Account {
   @Override
   public String toString() {
     return "Account{"
-        + "accountNo=" + accountNo
-        + ", owner='" + owner + '\''
-        + ", money=" + money
+        + "accountNo="
+        + accountNo
+        + ", owner='"
+        + owner
+        + '\''
+        + ", money="
+        + money
         + '}';
   }
 
@@ -111,11 +115,10 @@ public class Account {
     handleDeposit(moneyDepositEvent.getMoney(), moneyDepositEvent.isRealTime());
   }
 
-
   /**
    * Handles the AccountCreateEvent.
    *
-   * @param accountCreateEvent the account create event
+   * @param accountCreateEvent the account created event
    */
   public void handleEvent(AccountCreateEvent accountCreateEvent) {
     AccountAggregate.putAccount(this);
@@ -141,6 +144,4 @@ public class Account {
   public void handleTransferToEvent(MoneyTransferEvent moneyTransferEvent) {
     handleDeposit(moneyTransferEvent.getMoney(), moneyTransferEvent.isRealTime());
   }
-
-
 }

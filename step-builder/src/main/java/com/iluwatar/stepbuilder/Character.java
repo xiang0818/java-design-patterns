@@ -25,15 +25,10 @@
 package com.iluwatar.stepbuilder;
 
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
-
-
-/**
- * The class with many parameters.
- */
+/** The class with many parameters. */
 @Getter
 @Setter
 public class Character {
@@ -48,7 +43,6 @@ public class Character {
   public Character(String name) {
     this.name = name;
   }
-
 
   @Override
   public String toString() {

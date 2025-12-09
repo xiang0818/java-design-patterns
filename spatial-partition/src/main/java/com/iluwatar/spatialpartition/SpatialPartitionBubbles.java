@@ -25,19 +25,18 @@
 package com.iluwatar.spatialpartition;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class extends the generic SpatialPartition abstract class and is used in our example to keep
  * track of all the bubbles that collide, pop and stay un-popped.
  */
-
 public class SpatialPartitionBubbles extends SpatialPartitionGeneric<Bubble> {
 
-  private final HashMap<Integer, Bubble> bubbles;
+  private final Map<Integer, Bubble> bubbles;
   private final QuadTree bubblesQuadTree;
 
-  SpatialPartitionBubbles(HashMap<Integer, Bubble> bubbles, QuadTree bubblesQuadTree) {
+  SpatialPartitionBubbles(Map<Integer, Bubble> bubbles, QuadTree bubblesQuadTree) {
     this.bubbles = bubbles;
     this.bubblesQuadTree = bubblesQuadTree;
   }
@@ -48,7 +47,7 @@ public class SpatialPartitionBubbles extends SpatialPartitionGeneric<Bubble> {
     var rect = new Rect(b.coordinateX, b.coordinateY, 2D * b.radius, 2D * b.radius);
     var quadTreeQueryResult = new ArrayList<Point>();
     this.bubblesQuadTree.query(rect, quadTreeQueryResult);
-    //handling these collisions
+    // handling these collisions
     b.handleCollision(quadTreeQueryResult, this.bubbles);
   }
 }

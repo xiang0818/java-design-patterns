@@ -25,19 +25,19 @@
 package com.iluwatar.spatialpartition;
 
 import java.util.Collection;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The quadtree data structure is being used to keep track of the objects' locations. It has the
  * insert(Point) and query(range) methods to insert a new object and find the objects within a
  * certain (rectangular) range respectively.
  */
-
 public class QuadTree {
   Rect boundary;
   int capacity;
   boolean divided;
-  Hashtable<Integer, Point> points;
+  Map<Integer, Point> points;
   QuadTree northwest;
   QuadTree northeast;
   QuadTree southwest;
@@ -47,7 +47,7 @@ public class QuadTree {
     this.boundary = boundary;
     this.capacity = capacity;
     this.divided = false;
-    this.points = new Hashtable<>();
+    this.points = new HashMap<>();
     this.northwest = null;
     this.northeast = null;
     this.southwest = null;
@@ -92,13 +92,9 @@ public class QuadTree {
   }
 
   Collection<Point> query(Rect r, Collection<Point> relevantPoints) {
-    //could also be a circle instead of a rectangle
+    // could also be a circle instead of a rectangle
     if (this.boundary.intersects(r)) {
-      this.points
-          .values()
-          .stream()
-          .filter(r::contains)
-          .forEach(relevantPoints::add);
+      this.points.values().stream().filter(r::contains).forEach(relevantPoints::add);
       if (this.divided) {
         this.northwest.query(r, relevantPoints);
         this.northeast.query(r, relevantPoints);

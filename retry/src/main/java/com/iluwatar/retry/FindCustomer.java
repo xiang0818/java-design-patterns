@@ -34,22 +34,11 @@ import java.util.List;
  * <p>This is an imaginary operation that, for some imagined input, returns the ID for a customer.
  * However, this is a "flaky" operation that is supposed to fail intermittently, but for the
  * purposes of this example it fails in a programmed way depending on the constructor parameters.
- *
- * @author George Aristy (george.aristy@gmail.com)
  */
-public final class FindCustomer implements BusinessOperation<String> {
-  private final String customerId;
-  private final Deque<BusinessException> errors;
-
-  /**
-   * Ctor.
-   *
-   * @param customerId the final result of the remote operation
-   * @param errors     the errors to throw before returning {@code customerId}
-   */
+public record FindCustomer(String customerId, Deque<BusinessException> errors)
+    implements BusinessOperation<String> {
   public FindCustomer(String customerId, BusinessException... errors) {
-    this.customerId = customerId;
-    this.errors = new ArrayDeque<>(List.of(errors));
+    this(customerId, new ArrayDeque<>(List.of(errors)));
   }
 
   @Override

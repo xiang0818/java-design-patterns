@@ -28,7 +28,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -37,9 +36,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.joda.money.Money;
 
 /**
- * This class organizes domain logic of customer.
- * A single instance of this class
- * contains both the data and behavior of a single customer.
+ * This class organizes domain logic of customer. A single instance of this class contains both the
+ * data and behavior of a single customer.
  */
 @Slf4j
 @Getter
@@ -52,9 +50,7 @@ public class Customer {
   @NonNull private String name;
   @NonNull private Money money;
 
-  /**
-   * Save customer or update if customer already exist.
-   */
+  /** Save customer or update if customer already exist. */
   public void save() {
     try {
       Optional<Customer> customer = customerDao.findByName(name);
@@ -118,9 +114,7 @@ public class Customer {
     }
   }
 
-  /**
-   * Print customer's purchases.
-   */
+  /** Print customer's purchases. */
   public void showPurchases() {
     Optional<String> purchasesToShow =
         purchases.stream()
@@ -134,9 +128,7 @@ public class Customer {
     }
   }
 
-  /**
-   * Print customer's money balance.
-   */
+  /** Print customer's money balance. */
   public void showBalance() {
     LOGGER.info(name + " balance: " + money);
   }

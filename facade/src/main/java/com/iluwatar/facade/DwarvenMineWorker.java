@@ -27,9 +27,7 @@ package com.iluwatar.facade;
 import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * DwarvenMineWorker is one of the goldmine subsystems.
- */
+/** DwarvenMineWorker is one of the goldmine subsystems. */
 @Slf4j
 public abstract class DwarvenMineWorker {
 
@@ -51,30 +49,16 @@ public abstract class DwarvenMineWorker {
 
   private void action(Action action) {
     switch (action) {
-      case GO_TO_SLEEP:
-        goToSleep();
-        break;
-      case WAKE_UP:
-        wakeUp();
-        break;
-      case GO_HOME:
-        goHome();
-        break;
-      case GO_TO_MINE:
-        goToMine();
-        break;
-      case WORK:
-        work();
-        break;
-      default:
-        LOGGER.info("Undefined action");
-        break;
+      case GO_TO_SLEEP -> goToSleep();
+      case WAKE_UP -> wakeUp();
+      case GO_HOME -> goHome();
+      case GO_TO_MINE -> goToMine();
+      case WORK -> work();
+      default -> LOGGER.info("Undefined action");
     }
   }
 
-  /**
-   * Perform actions.
-   */
+  /** Perform actions. */
   public void action(Action... actions) {
     Arrays.stream(actions).forEach(this::action);
   }
@@ -84,6 +68,10 @@ public abstract class DwarvenMineWorker {
   public abstract String name();
 
   enum Action {
-    GO_TO_SLEEP, WAKE_UP, GO_HOME, GO_TO_MINE, WORK
+    GO_TO_SLEEP,
+    WAKE_UP,
+    GO_HOME,
+    GO_TO_MINE,
+    WORK
   }
 }

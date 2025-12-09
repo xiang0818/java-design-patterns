@@ -26,7 +26,6 @@ package com.iluwatar.execute.around;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -36,9 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SimpleFileWriter {
 
-  /**
-   * Constructor.
-   */
+  /** Constructor. */
   public SimpleFileWriter(String filename, FileWriterAction action) throws IOException {
     LOGGER.info("Opening the file");
     try (var writer = new FileWriter(filename)) {

@@ -26,6 +26,7 @@ package com.iluwatar.specialcase;
 
 import lombok.extern.slf4j.Slf4j;
 
+/** View representing insufficient funds. */
 @Slf4j
 public class InsufficientFunds implements ReceiptViewModel {
 
@@ -48,7 +49,12 @@ public class InsufficientFunds implements ReceiptViewModel {
 
   @Override
   public void show() {
-    LOGGER.info("Insufficient funds: " + amount + " of user: " + userName
-        + " for buying item: " + itemName);
+    LOGGER.info(
+        "Insufficient funds: "
+            + amount
+            + " of user: "
+            + userName
+            + " for buying item: "
+            + itemName);
   }
 }

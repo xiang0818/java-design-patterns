@@ -24,6 +24,7 @@
  */
 package com.iluwatar.specialcase;
 
+/** Implementation of special case pattern. */
 public class ApplicationServicesImpl implements ApplicationServices {
 
   private DomainServicesImpl domain = new DomainServicesImpl();

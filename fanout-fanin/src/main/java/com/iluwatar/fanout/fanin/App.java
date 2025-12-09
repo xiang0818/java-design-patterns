@@ -26,10 +26,7 @@ package com.iluwatar.fanout.fanin;
 
 import java.util.Arrays;
 import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
-
-
 
 /**
  * FanOut/FanIn pattern is a concurrency pattern that refers to executing multiple instances of the

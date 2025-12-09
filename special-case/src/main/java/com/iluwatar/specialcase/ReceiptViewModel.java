@@ -24,6 +24,7 @@
  */
 package com.iluwatar.specialcase;
 
+/** ReceiptViewModel interface. */
 public interface ReceiptViewModel {
 
   void show();

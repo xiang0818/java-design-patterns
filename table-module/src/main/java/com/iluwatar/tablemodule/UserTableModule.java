@@ -27,29 +27,23 @@ package com.iluwatar.tablemodule;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.sql.DataSource;
-
 import lombok.extern.slf4j.Slf4j;
 
-
 /**
- * This class organizes domain logic with the user table in the
- * database. A single instance of this class contains the various
- * procedures that will act on the data.
+ * This class organizes domain logic with the user table in the database. A single instance of this
+ * class contains the various procedures that will act on the data.
  */
 @Slf4j
 public class UserTableModule {
-  /**
-   * Public element for creating schema.
-   */
+  /** Public element for creating schema. */
   public static final String CREATE_SCHEMA_SQL =
-          "CREATE TABLE IF NOT EXISTS USERS (ID NUMBER, USERNAME VARCHAR(30) "
-                  + "UNIQUE,PASSWORD VARCHAR(30))";
-  /**
-   * Public element for deleting schema.
-   */
-  public static final String DELETE_SCHEMA_SQL = "DROP TABLE USERS IF EXISTS";
-  private final DataSource dataSource;
+      "CREATE TABLE IF NOT EXISTS USERS (ID NUMBER, USERNAME VARCHAR(30) "
+          + "UNIQUE,PASSWORD VARCHAR(30))";
 
+  /** Public element for deleting schema. */
+  public static final String DELETE_SCHEMA_SQL = "DROP TABLE USERS IF EXISTS";
+
+  private final DataSource dataSource;
 
   /**
    * Public constructor.
@@ -60,7 +54,6 @@ public class UserTableModule {
     this.dataSource = userDataSource;
   }
 
-
   /**
    * Login using username and password.
    *
@@ -69,14 +62,11 @@ public class UserTableModule {
    * @return the execution result of the method
    * @throws SQLException if any error
    */
-  public int login(final String username, final String password)
-          throws SQLException {
+  public int login(final String username, final String password) throws SQLException {
     var sql = "select count(*) from USERS where username=? and password=?";
     ResultSet resultSet = null;
     try (var connection = dataSource.getConnection();
-         var preparedStatement =
-                 connection.prepareStatement(sql)
-    ) {
+        var preparedStatement = connection.prepareStatement(sql)) {
       var result = 0;
       preparedStatement.setString(1, username);
       preparedStatement.setString(2, password);
@@ -107,9 +97,7 @@ public class UserTableModule {
   public int registerUser(final User user) throws SQLException {
     var sql = "insert into USERS (username, password) values (?,?)";
     try (var connection = dataSource.getConnection();
-         var preparedStatement =
-                 connection.prepareStatement(sql)
-    ) {
+        var preparedStatement = connection.prepareStatement(sql)) {
       preparedStatement.setString(1, user.getUsername());
       preparedStatement.setString(2, user.getPassword());
       var result = preparedStatement.executeUpdate();

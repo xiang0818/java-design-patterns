@@ -37,18 +37,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-/**
- * Date: 12/27/15 - 11:08 AM
- *
- * @author Jeroen Meulemeester
- */
+/** GWeatherTest */
 class GWeatherTest {
 
   private InMemoryAppender appender;
 
   @BeforeEach
   void setUp() {
-    appender = new InMemoryAppender(GWeather.class);
+    appender = new InMemoryAppender(GenWeather.class);
   }
 
   @AfterEach
@@ -64,7 +60,7 @@ class GWeatherTest {
   void testAddRemoveObserver() {
     final var observer = mock(Race.class);
 
-    final var weather = new GWeather();
+    final var weather = new GenWeather();
     weather.addObserver(observer);
     verifyNoMoreInteractions(observer);
 
@@ -80,13 +76,11 @@ class GWeatherTest {
     assertEquals(2, appender.getLogSize());
   }
 
-  /**
-   * Verify if the weather passes in the order of the {@link WeatherType}s
-   */
+  /** Verify if the weather passes in the order of the {@link WeatherType}s */
   @Test
   void testTimePasses() {
     final var observer = mock(Race.class);
-    final var weather = new GWeather();
+    final var weather = new GenWeather();
     weather.addObserver(observer);
 
     final var inOrder = inOrder(observer);
@@ -98,5 +92,4 @@ class GWeatherTest {
 
     verifyNoMoreInteractions(observer);
   }
-
 }
